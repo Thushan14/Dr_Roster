@@ -1,0 +1,84 @@
+.rosterPage {
+  min-height: 100vh;
+  padding: 30px;
+  color: white;
+  background: linear-gradient(135deg, #020617, #0b3b8c, #1e1b4b);
+  font-family: Arial, sans-serif;
+}
+
+.rosterTopbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.rosterTopbar h1 {
+  font-size: 42px;
+  margin: 0;
+}
+
+.rosterTopbar p {
+  color: #cbd5e1;
+  margin-top: 8px;
+}
+
+.backBtn,
+.rosterActions button {
+  border: none;
+  border-radius: 12px;
+  padding: 13px 22px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  background: linear-gradient(135deg, #38bdf8, #4f46e5);
+}
+
+.rosterActions {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.summaryBox {
+  padding: 18px;
+  margin-bottom: 25px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.rosterCard {
+  margin-bottom: 35px;
+  padding: 25px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.rosterCard h2 {
+  margin-bottom: 18px;
+  color: #38bdf8;
+}
+
+.rosterCard table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.rosterCard th,
+.rosterCard td {
+  padding: 14px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.rosterCard th {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.rosterCard td {
+  background: rgba(255, 255, 255, 0.06);
+}

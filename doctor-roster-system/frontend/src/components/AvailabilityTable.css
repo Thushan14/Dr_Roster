@@ -1,0 +1,218 @@
+.page {
+  min-height: 100vh;
+  padding: 30px;
+  color: white;
+  background: linear-gradient(135deg, #020617, #0b3b8c, #1e1b4b);
+  font-family: Arial, sans-serif;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.topbar h1 {
+  font-size: 42px;
+  margin: 0;
+}
+
+.topbar p,
+.profile p {
+  margin: 5px 0 0;
+  color: #cbd5e1;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profileIcon {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glassCard {
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 22px;
+  padding: 25px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardHeader h2 {
+  font-size: 30px;
+  margin: 0;
+}
+
+.cardHeader span {
+  color: #38bdf8;
+}
+
+.cardHeader p {
+  color: #dbeafe;
+}
+
+.resetBtn,
+.submitBtn {
+  border: none;
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+}
+
+.resetBtn {
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.availabilityGrid {
+  display: grid;
+  grid-template-columns: 220px repeat(3, 1fr);
+}
+
+.header {
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.12);
+  font-weight: bold;
+}
+
+.header div,
+.row > div {
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.dayCell {
+  font-weight: bold;
+}
+
+.shiftCell {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.checkLabel {
+  font-weight: bold;
+}
+
+.shiftCell input {
+  margin-right: 8px;
+}
+
+.shiftCell select {
+  padding: 10px;
+  border-radius: 8px;
+  color: white;
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.shiftCell select:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.bottomArea {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.infoBox {
+  padding: 18px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #dbeafe;
+  max-width: 420px;
+}
+
+.submitBtn {
+  padding: 16px 38px;
+  font-size: 18px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #38bdf8, #7c3aed);
+}
+
+.success {
+  margin-top: 18px;
+  color: #86efac;
+  font-weight: bold;
+}
+.profileWrapper {
+  position: relative;
+}
+
+.profile {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.profileMenu {
+  position: absolute;
+  right: 0;
+  top: 70px;
+  width: 170px;
+  padding: 10px;
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+}
+
+.profileMenu button {
+  width: 100%;
+  padding: 12px;
+  text-align: left;
+  border: none;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.profileMenu button:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+.doctorInfo {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.doctorInfo input {
+  flex: 1;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(15, 23, 42, 0.65);
+  color: white;
+  outline: none;
+}
+
+.doctorInfo input::placeholder {
+  color: #cbd5e1;
+}
