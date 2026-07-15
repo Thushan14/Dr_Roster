@@ -1,0 +1,1703 @@
+.adminPage {
+  min-height: 100vh;
+  background-image: url("../assets/bag2.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 50px 70px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.adminPanel {
+  width: 1120px;
+  height: 625px;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  background: #11194f;
+  border-radius: 18px;
+  color: white;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.35);
+}
+
+.adminSideBar {
+  width: 80px;
+  padding: 22px 0;
+  background: #10184a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  z-index: 30;
+  flex-shrink: 0;
+}
+
+.adminMenuBtn,
+.adminIconBtn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 14px;
+  padding: 6px;
+  transition: all 0.25s ease;
+}
+
+.adminMenuBtn {
+  margin-bottom: 35px;
+}
+
+.adminMenuBtn img {
+  width: 24px;
+}
+
+.adminIconBtn img {
+  width: 42px;
+  height: 42px;
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  transition: all 0.25s ease;
+}
+
+.adminIconBtn.active img {
+  background: #302277;
+}
+
+.adminIconBtn:hover img {
+  transform: scale(1.08);
+  box-shadow: 0 0 12px rgba(125, 90, 255, 0.45);
+}
+
+.adminSideBar.blurIcons .adminIconBtn {
+  filter: blur(3px);
+  pointer-events: none;
+}
+
+.adminSideBar.blurIcons .adminMenuBtn {
+  filter: none;
+  pointer-events: auto;
+}
+
+.adminMenuOverlay,
+.adminProfileOverlay {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  border: none;
+}
+
+.adminMenuOverlay {
+  z-index: 80;
+}
+
+.adminProfileOverlay {
+  z-index: 90;
+}
+
+.adminSideBar {
+  position: relative;
+  z-index: 100;
+}
+
+.adminSidePopup {
+  z-index: 120;
+}
+
+.adminProfileWrapper {
+  position: relative;
+  z-index: 120;
+}
+
+.adminContent {
+  position: relative;
+  z-index: 10;
+}
+
+.adminPanel:has(.adminSidePopup) .adminContent {
+  filter: blur(3px);
+}
+
+.adminSidePopup {
+  position: absolute;
+  top: 22px;
+  left: 80px;
+  width: 245px;
+  min-height: 470px;
+  background: #e5e5e5;
+  border-radius: 16px;
+  padding: 50px 28px;
+  z-index: 100;
+  animation: adminSlideFromLeft 0.25s ease;
+}
+
+.adminSidePopup.closing {
+  animation: adminSlideToLeft 0.25s ease forwards;
+}
+
+.adminPopupItem {
+  width: 100%;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 28px;
+  color: #9b8f8f;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 14px;
+  padding: 8px 12px;
+  transition: all 0.25s ease;
+}
+
+.adminPopupItem:hover {
+  background: rgba(48, 34, 119, 0.08);
+}
+
+.adminPopupItem img {
+  width: 42px;
+  height: 42px;
+  padding: 10px;
+  border-radius: 12px;
+  background: #dce0ef;
+  transition: all 0.25s ease;
+}
+
+.adminPopupItem.active img {
+  background: #302277;
+}
+
+.adminPopupItem:hover img {
+  transform: scale(1.08);
+  box-shadow: 0 0 12px rgba(120, 90, 255, 0.35);
+}
+
+.adminPopupLogout {
+  margin-left: 42px;
+  margin-top: 10px;
+  padding: 12px 38px;
+  border: none;
+  border-radius: 12px;
+  background: #d9dcec;
+  color: #9b8f8f;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.adminContent {
+  flex: 1;
+  padding: 35px;
+  overflow: hidden;
+}
+
+.adminHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.adminHeader h1 {
+  font-size: 14px;
+  margin: 0 0 8px;
+  font-weight: 500;
+}
+
+.adminHeader p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.adminProfileWrapper {
+  position: relative;
+}
+
+.adminProfileAvatarBtn {
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.adminProfileAvatarBtn img,
+.adminDefaultAvatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  transition: all 0.25s ease;
+}
+
+.adminProfileAvatarBtn img {
+  object-fit: cover;
+  display: block;
+}
+
+.adminDefaultAvatar {
+  background: #242b65;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+}
+
+.adminProfileMenu {
+  position: absolute;
+  top: 65px;
+  right: 0;
+  background: #10184a;
+  border-radius: 14px;
+  padding: 10px;
+  min-width: 150px;
+  z-index: 120;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.adminProfileMenu button {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: white;
+  padding: 12px;
+  text-align: left;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.adminTabs {
+  margin-top: 35px;
+  display: flex;
+  width: 520px;
+  height: 30px;
+}
+
+.adminTabs button {
+  flex: 1;
+  border: none;
+  background: #a9bedb;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.adminTabs button.active {
+  background: #008cff;
+}
+
+.adminContent hr {
+  margin: 8px 0 22px;
+  border: 0.5px solid rgba(255, 255, 255, 0.55);
+}
+
+.adminActions {
+  display: flex;
+  gap: 22px;
+  margin-bottom: 18px;
+}
+
+.adminActions button {
+  border: none;
+  border-radius: 18px;
+  padding: 10px 24px;
+  background: #efc8ef;
+  color: #111;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.adminSubHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.adminSubHeader p {
+  font-size: 12px;
+  margin-right: 120px;
+}
+
+.adminToggle {
+  width: 140px;
+  height: 24px;
+  display: flex;
+  background: #ead8ff;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.adminToggle button {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-weight: 700;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.adminToggle button.active {
+  background: #d98eea;
+  border-radius: 20px;
+}
+
+.adminRosterBox {
+  background: #d9d9d9;
+  border-radius: 14px;
+  padding: 22px;
+  height: 335px;
+  overflow-y: auto;
+}
+
+.adminRosterHeader {
+  display: grid;
+  grid-template-columns: 100px 100px repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.adminRosterHeader div {
+  background: #008cff;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.adminDayGroup {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.adminDayCell {
+  background: #32c6e8;
+  color: white;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+}
+
+.adminShiftRows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.adminRosterRow {
+  display: grid;
+  grid-template-columns: 100px repeat(4, 1fr);
+  gap: 14px;
+}
+
+.adminShiftCell,
+.adminDoctorCell {
+  background: #d8e4ff;
+  color: #000;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.adminShiftCell {
+  background: #32c6e8;
+  color: white;
+}
+
+@keyframes adminSlideFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes adminSlideToLeft {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(-35px);
+  }
+}
+.savePopupOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(17, 25, 79, 0.45);
+  backdrop-filter: blur(6px);
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.savePopup {
+  width: 320px;
+  background: #e5e5e5;
+  border-radius: 18px;
+  padding: 25px;
+  color: #111;
+  text-align: center;
+}
+
+.savePopup input {
+  width: 100%;
+  height: 38px;
+  border: none;
+  border-radius: 10px;
+  padding: 0 12px;
+  margin: 18px 0;
+}
+
+.savePopupButtons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.savePopupButtons button {
+  border: none;
+  border-radius: 12px;
+  padding: 10px 24px;
+  background: #efc8ef;
+  font-weight: 700;
+  cursor: pointer;
+}
+.adminPopupOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(17, 25, 79, 0.5);
+  backdrop-filter: blur(6px);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.adminSavePopup {
+  width: 360px;
+  background: #e5e5e5;
+  color: #111;
+  border-radius: 18px;
+  padding: 28px;
+  text-align: center;
+  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.4);
+  animation: savePopupIn 0.25s ease;
+}
+
+.adminSavePopup h3 {
+  margin: 0 0 18px;
+  font-size: 22px;
+  color: #111;
+}
+
+.adminSavePopup input {
+  width: 100%;
+  height: 42px;
+  border: none;
+  border-radius: 12px;
+  padding: 0 14px;
+  margin-bottom: 22px;
+  outline: none;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+.adminSaveButtons {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
+.adminSaveButtons button {
+  border: none;
+  border-radius: 14px;
+  padding: 11px 28px;
+  background: #efc8ef;
+  color: #111;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.adminSaveButtons button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(217, 142, 234, 0.45);
+}
+
+.adminToast {
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #e5e5e5;
+  color: #111;
+  padding: 12px 28px;
+  border-radius: 14px;
+  font-weight: 700;
+  z-index: 1000;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  animation: toastIn 0.3s ease;
+}
+
+@keyframes savePopupIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+.savedRosterPage {
+  margin-top: 35px;
+  padding-left: 20px;
+  padding-right: 60px;
+}
+
+.savedRosterRow {
+  height: 42px;
+  background: #e7bde9;
+  border-radius: 22px;
+  margin-bottom: 24px;
+  padding: 0 18px 0 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #111;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.savedRosterRow div {
+  display: flex;
+  gap: 18px;
+}
+
+.savedRosterRow button {
+  border: none;
+  background: #f4e8f8;
+  color: #111;
+  border-radius: 18px;
+  padding: 8px 26px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.25s ease;
+}
+
+.savedRosterRow button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px rgba(217, 142, 234, 0.45);
+}
+
+.noSavedText {
+  margin-top: 60px;
+  color: #d9d9d9;
+}
+.savedOpenActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 28px 0 18px;
+}
+
+.savedBackBtn {
+  border: none;
+  border-radius: 18px;
+  padding: 10px 28px;
+  background: #d9dcec;
+  color: #111;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.savedRosterTableBox {
+  background: #d9d9d9;
+  border-radius: 14px;
+  padding: 22px;
+  height: 335px;
+  overflow-y: auto;
+}
+.doctorAvailabilityPage {
+  height: 390px;
+  background: #d9d9d9;
+  border-radius: 6px;
+  padding: 22px;
+  overflow-y: auto;
+}
+
+.doctorAvailabilityCard {
+  background: #e7bde9;
+  border-radius: 28px;
+  padding: 18px 24px;
+  margin-bottom: 24px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.doctorAvailabilityCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 16px rgba(217, 142, 234, 0.45);
+}
+
+.doctorAvailabilityName {
+  width: 160px;
+  background: #008cff;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.doctorAvailabilityRows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.availabilityMiniRow {
+  display: grid;
+  grid-template-columns: 150px 150px 200px;
+  gap: 22px;
+}
+
+.availabilityMiniRow span {
+  background: #008cff;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 600;
+}
+.doctorAvailabilityPage {
+  height: 390px;
+  background: #d9d9d9;
+  border-radius: 14px;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.doctorAvailabilityCard {
+  background: #e7bde9;
+  border-radius: 22px;
+  padding: 18px;
+  margin-bottom: 22px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.doctorAvailabilityCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 18px rgba(217, 142, 234, 0.45);
+}
+
+.doctorAvailabilityHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.doctorAvailabilityHeader h3 {
+  margin: 0;
+  background: #008cff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.doctorAvailabilityHeader p {
+  margin: 8px 0 0;
+  color: #333;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.doctorAvailabilityHeader span {
+  color: #111;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.availabilityRecordHeader,
+.availabilityRecordRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.4fr;
+  gap: 18px;
+  margin-bottom: 10px;
+}
+
+.availabilityRecordHeader span {
+  background: #11194f;
+  color: white;
+  padding: 9px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.availabilityRecordRow span {
+  background: #008cff;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+.analyticsPage{
+    height:420px;
+}
+
+.analyticsGrid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+}
+
+.analyticsCard{
+    background:#e7bde9;
+    border-radius:22px;
+    padding:20px;
+    min-height:210px;
+}
+
+.analyticsCard h3{
+    margin-bottom:20px;
+    color:#11194f;
+}
+
+.analyticsBigNumber{
+    font-size:56px;
+    font-weight:bold;
+    text-align:center;
+}
+
+.progressBar{
+    height:10px;
+    border-radius:10px;
+    background:#d4d4d4;
+    overflow:hidden;
+    margin-top:20px;
+}
+
+.progressFill{
+    height:100%;
+    background:#008cff;
+}
+
+.dayBar{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:12px;
+}
+
+.bar{
+    flex:1;
+    height:10px;
+    background:#ddd;
+    border-radius:10px;
+}
+
+.barFill{
+    height:100%;
+    background:#008cff;
+    border-radius:10px;
+}
+
+.riskRow{
+    padding:10px;
+    border-radius:8px;
+    margin-bottom:8px;
+    font-weight:600;
+}
+
+.riskRow.high{
+    background:#ffd5d5;
+    color:#d60000;
+}
+
+.riskRow.medium{
+    background:#ffe8ba;
+    color:#b26d00;
+}
+.analyticsPage {
+  height: 390px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.analyticsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.analyticsCard {
+  background: #e7bde9;
+  border-radius: 20px;
+  padding: 16px 18px;
+  min-height: 150px;
+}
+
+.analyticsCard h3 {
+  font-size: 18px;
+  margin: 0 0 14px;
+}
+
+.analyticsBigNumber {
+  font-size: 42px;
+  font-weight: 800;
+  text-align: center;
+  margin: 8px 0;
+}
+
+.analyticsCard p {
+  font-size: 14px;
+}
+
+.dayBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.dayBar span {
+  font-size: 13px;
+}
+
+.bar {
+  flex: 1;
+  height: 9px;
+}
+
+.riskRow {
+  padding: 8px 10px;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.analyticsPage::-webkit-scrollbar {
+  width: 6px;
+}
+
+.analyticsPage::-webkit-scrollbar-thumb {
+  background: #bfc4cf;
+  border-radius: 20px;
+}
+.adminDoctorCell select {
+  width: 100%;
+  height: 38px;
+  border: none;
+  border-radius: 10px;
+  background: #d8e4ff;
+  color: #000;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  font-size: 14px;
+}
+.adminDoctorCell{
+    position:relative;
+    overflow:visible;
+}
+
+.doctorDropdown{
+    position:relative;
+    width:100%;
+}
+
+.doctorDropdownBtn{
+    width:100%;
+    background:#d9e4ff;
+    border:none;
+    border-radius:10px;
+    padding:8px;
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-weight:600;
+}
+
+.doctorDropdownMenu{
+    position:absolute;
+    top:42px;
+    left:0;
+    width:100%;
+    background:#eef3ff;
+    border-radius:10px;
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+    z-index:99999;
+}
+
+.doctorDropdownMenu button{
+    width:100%;
+    border:none;
+    background:transparent;
+    padding:10px;
+    cursor:pointer;
+}
+
+.doctorDropdownMenu button:hover{
+    background:#d7e5ff;
+}
+
+.adminHeader{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:25px;
+}
+
+.adminProfileWrapper{
+    position:relative;
+}
+
+.adminProfileAvatarBtn{
+    width:56px;
+    height:56px;
+    border:none;
+    border-radius:50%;
+    overflow:hidden;
+    cursor:pointer;
+    background:#313b85;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    transition:.25s;
+}
+
+.adminProfileAvatarBtn:hover{
+    background:#4150aa;
+}
+
+.adminProfileAvatarBtn img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.adminDefaultAvatar{
+    font-size:30px;
+    color:white;
+}
+
+.adminProfileMenu{
+    position:absolute;
+    right:0;
+    top:70px;
+
+    width:170px;
+
+    background:#1f255d;
+
+    border-radius:18px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.35);
+
+    padding:10px;
+
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+
+    z-index:999;
+}
+
+.adminProfileMenu button{
+    border:none;
+    background:transparent;
+    color:white;
+    font-size:15px;
+    padding:12px;
+    border-radius:12px;
+    text-align:left;
+    cursor:pointer;
+}
+
+.adminProfileMenu button:hover{
+    background:#3344a5;
+}
+
+.savedActionButtons {
+  display: flex;
+  gap: 18px;
+}
+
+.savedPublishBtn,
+.savedBackBtn {
+  border: none;
+  border-radius: 18px;
+  padding: 10px 28px;
+  background: #d9dcec;
+  color: #111;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.adminRosterHeader {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #d9d9d9;
+  padding-bottom: 10px;
+}
+.savedActionButtons{
+    display:flex;
+    gap:18px;
+    align-items:center;
+}
+
+.savedSaveBtn,
+.savedPublishBtn,
+.savedBackBtn{
+    min-width:120px;
+    height:46px;
+
+    border:none;
+    border-radius:30px;
+
+    background:#d9dcec;
+    color:#111;
+
+    font-size:18px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.25s;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+.savedSaveBtn:hover,
+.savedPublishBtn:hover,
+.savedBackBtn:hover{
+    background:#ffffff;
+    transform:translateY(-2px);
+}
+
+.savedSaveBtn:active,
+.savedPublishBtn:active,
+.savedBackBtn:active{
+    transform:scale(.97);
+}
+.adminProfileOverlay {
+  position: absolute;
+  inset: 0;
+  border: none;
+  background: transparent;
+  z-index: 998;
+}
+@media (max-width: 900px) {
+  html,
+  body,
+  #root {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: auto !important;
+    overflow-y: auto !important;
+  }
+
+  .adminPage {
+    width: max-content;
+    min-width: 1120px;
+    min-height: 100vh;
+    padding: 30px;
+    overflow: visible !important;
+    display: block;
+  }
+
+  .adminPanel {
+    width: 1120px;
+    min-width: 1120px;
+    height: 625px;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .adminContent {
+    min-width: 1040px;
+  }
+}
+/* =========================================================
+   MANAGE DOCTORS VIEW
+   ========================================================= */
+
+.adminPanel.manageDoctorsMode {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.adminPanel.manageDoctorsMode .adminSideBar {
+  display: flex;
+  flex-shrink: 0;
+  width: 80px;
+  height: 100%;
+  visibility: visible;
+  opacity: 1;
+  z-index: 40;
+}
+
+.adminPanel.manageDoctorsMode .adminContent {
+  flex: 1;
+  width: auto;
+  height: 100%;
+  margin-left: 0;
+  padding: 28px 34px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.adminPanel.manageDoctorsMode .adminHeader,
+.adminPanel.manageDoctorsMode .adminTabs,
+.adminPanel.manageDoctorsMode .adminContent > hr {
+  display: none;
+}
+
+.manageDoctorsTab {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding: 0 4px 20px;
+  box-sizing: border-box;
+}
+
+.manageDoctorsHeader {
+  min-height: 82px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.manageDoctorsHeader h2 {
+  margin: 0;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.manageDoctorsHeader p {
+  margin: 6px 0 0;
+  color: white;
+  font-size: 14px;
+}
+
+.manageDoctorsBackBtn {
+  min-width: 92px;
+  border: none;
+  border-radius: 22px;
+  padding: 11px 25px;
+  background: #efc8ef;
+  color: #111;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.manageDoctorsDivider {
+  margin: 5px 0 24px;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.manageDoctorForm {
+  width: 100%;
+  display: grid;
+  grid-template-columns:
+    minmax(170px, 1fr)
+    minmax(220px, 1fr)
+    minmax(180px, 1fr)
+    110px;
+  gap: 30px;
+  align-items: center;
+  padding: 0 20px;
+  margin-bottom: 38px;
+  box-sizing: border-box;
+}
+
+.manageDoctorForm input {
+  width: 100%;
+  min-width: 0;
+  height: 46px;
+  border: none;
+  border-radius: 24px;
+  padding: 0 20px;
+  background: #efc8ef;
+  color: #111;
+  text-align: center;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.manageDoctorForm input:nth-child(2),
+.manageDoctorForm input:nth-child(3) {
+  background: #e7efff;
+}
+
+.manageDoctorForm button {
+  width: 110px;
+  height: 46px;
+  border: none;
+  border-radius: 24px;
+  background: #efc8ef;
+  color: #111;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.manageDoctorList {
+  display: grid;
+  gap: 18px;
+  padding: 0 20px;
+}
+
+.manageDoctorCard {
+  width: 100%;
+  min-height: 102px;
+  padding: 16px 24px;
+  border-radius: 24px;
+  background: #e7bde9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  box-sizing: border-box;
+}
+
+.manageDoctorDetails {
+  flex: 1;
+  max-width: 700px;
+  min-height: 62px;
+  padding: 14px 22px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+  box-sizing: border-box;
+}
+
+.manageDoctorDetails strong {
+  color: #080b36;
+  font-size: 17px;
+}
+
+.manageDoctorDetails span {
+  color: #080b36;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.manageDoctorActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.manageDoctorActive,
+.manageDoctorDisabled {
+  min-width: 88px;
+  padding: 10px 18px;
+  border-radius: 20px;
+  text-align: center;
+  font-weight: 700;
+  color: #111;
+}
+
+.manageDoctorActive {
+  background: #83eca0;
+}
+
+.manageDoctorDisabled {
+  background: #ffc4c4;
+}
+
+.manageDoctorDelete {
+  min-width: 86px;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 18px;
+  background: #f4c994;
+  color: #111;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.manageDoctorForm button:hover,
+.manageDoctorDelete:hover,
+.manageDoctorsBackBtn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.04);
+}
+
+.manageDoctorForm button:active,
+.manageDoctorDelete:active,
+.manageDoctorsBackBtn:active {
+  transform: scale(0.97);
+}
+
+.adminDoctorsIcon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #d7d7d7;
+  font-size: 24px;
+}
+
+.adminIconBtn.active .adminDoctorsIcon {
+  color: white;
+  background: #302277;
+}
+
+.pageTransition {
+  animation: manageDoctorsEnter 0.35s ease both;
+}
+
+@keyframes manageDoctorsEnter {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .adminPanel.manageDoctorsMode {
+    width: 1120px;
+    min-width: 1120px;
+  }
+
+  .adminPanel.manageDoctorsMode .adminContent {
+    padding: 28px;
+  }
+
+  .manageDoctorForm {
+    grid-template-columns:
+      minmax(170px, 1fr)
+      minmax(220px, 1fr)
+      minmax(180px, 1fr)
+      110px;
+  }
+}
+/* Make the Manage Doctors screen fully interactive */
+.adminPanel.manageDoctorsMode .manageDoctorsTab {
+  position: relative;
+  z-index: 5000;
+  pointer-events: auto !important;
+}
+
+.adminPanel.manageDoctorsMode .manageDoctorsTab *,
+.adminPanel.manageDoctorsMode .manageDoctorForm,
+.adminPanel.manageDoctorsMode .manageDoctorForm *,
+.adminPanel.manageDoctorsMode .manageDoctorCard,
+.adminPanel.manageDoctorsMode .manageDoctorCard * {
+  pointer-events: auto !important;
+}
+
+.adminPanel.manageDoctorsMode .manageDoctorsBackBtn,
+.adminPanel.manageDoctorsMode .manageDoctorForm button,
+.adminPanel.manageDoctorsMode .manageDoctorDelete {
+  position: relative;
+  z-index: 5001;
+  pointer-events: auto !important;
+  cursor: pointer;
+}
+
+/* Prevent dashboard overlays from covering this screen */
+.adminPanel.manageDoctorsMode .adminMenuOverlay,
+.adminPanel.manageDoctorsMode .adminProfileOverlay,
+.adminPanel.manageDoctorsMode .adminPopupOverlay {
+  display: none !important;
+  pointer-events: none !important;
+}
+/* =========================================================
+   CUSTOM DELETE DOCTOR POPUP
+   ========================================================= */
+
+.deleteDoctorOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(3, 9, 38, 0.66);
+  backdrop-filter: blur(7px);
+  animation: deleteOverlayFade 0.22s ease;
+}
+
+.deleteDoctorPopup {
+  width: min(430px, 100%);
+  padding: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 26px;
+  background: #171f5b;
+  color: white;
+  text-align: center;
+  box-shadow: 0 28px 75px rgba(0, 0, 0, 0.48);
+  animation: deletePopupEnter 0.26s ease;
+}
+
+.deleteDoctorPopupIcon {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #ffdddd;
+  color: #c92525;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.deleteDoctorPopup h2 {
+  margin: 0 0 15px;
+  color: white;
+  font-size: 23px;
+}
+
+.deleteDoctorPopup p {
+  margin: 0;
+  color: #d7dcf4;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.deleteDoctorPopup p strong {
+  display: block;
+  margin-top: 6px;
+  color: white;
+  font-size: 18px;
+}
+
+.deleteDoctorPopupEmail {
+  margin-top: 5px !important;
+  color: #bac5f1 !important;
+  overflow-wrap: anywhere;
+}
+
+.deleteDoctorPopupWarning {
+  margin-top: 16px !important;
+  color: #ffbebe !important;
+  font-weight: 600;
+}
+
+.deleteDoctorPopupActions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.deleteDoctorPopupActions button {
+  min-width: 125px;
+  min-height: 46px;
+  border: none;
+  border-radius: 24px;
+  padding: 11px 24px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.deleteDoctorCancelBtn {
+  background: #dce5fa;
+  color: #11194f;
+}
+
+.deleteDoctorConfirmBtn {
+  background: #ff8e96;
+  color: white;
+}
+
+.deleteDoctorPopupActions button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.04);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+}
+
+.deleteDoctorPopupActions button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.deleteDoctorPopupActions button:disabled {
+  opacity: 0.58;
+  cursor: not-allowed;
+}
+
+@keyframes deleteOverlayFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes deletePopupEnter {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 520px) {
+  .deleteDoctorPopup {
+    padding: 26px 20px;
+  }
+
+  .deleteDoctorPopupActions {
+    flex-direction: column-reverse;
+  }
+
+  .deleteDoctorPopupActions button {
+    width: 100%;
+  }
+}
+/* Keep the profile dropdown above the dashboard */
+.adminProfileWrapper {
+  position: relative;
+  z-index: 5000;
+}
+
+.adminProfileAvatarBtn {
+  position: relative;
+  z-index: 5001;
+  pointer-events: auto;
+}
+
+.adminProfileMenu {
+  position: absolute;
+  top: 66px;
+  right: 0;
+  width: 180px;
+  padding: 12px;
+  border-radius: 18px;
+  background: #242b65;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.38);
+  z-index: 5002;
+  pointer-events: auto;
+}
+
+.adminProfileMenu button {
+  width: 100%;
+  border: none;
+  border-radius: 11px;
+  padding: 13px 15px;
+  background: transparent;
+  color: white;
+  text-align: left;
+  font-size: 16px;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.adminProfileMenu button:hover {
+  background: #35418e;
+}
+
+/* Remove any invisible layer covering the profile menu */
+.adminProfileOverlay {
+  display: none !important;
+  pointer-events: none !important;
+}
+
+/* Keep Manage Doctors buttons clickable */
+.adminPanel.manageDoctorsMode .manageDoctorsTab {
+  position: relative;
+  z-index: 100;
+  pointer-events: auto;
+}
+
+.adminPanel.manageDoctorsMode .manageDoctorsBackBtn,
+.adminPanel.manageDoctorsMode .manageDoctorForm button,
+.adminPanel.manageDoctorsMode .manageDoctorDelete {
+  position: relative;
+  z-index: 101;
+  pointer-events: auto !important;
+  cursor: pointer;
+}
+
+/* Shared sidebar popup must be above its overlay */
+.sharedAdminOverlay {
+  z-index: 6000;
+}
+
+.sharedAdminPopup {
+  z-index: 6002;
+  pointer-events: auto;
+}
+
+.sharedAdminSidebar {
+  z-index: 6003;
+}
+
+.sharedAdminPopup button,
+.sharedAdminSidebar button {
+  pointer-events: auto;
+}

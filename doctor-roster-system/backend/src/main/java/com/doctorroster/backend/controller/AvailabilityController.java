@@ -34,6 +34,10 @@ public class AvailabilityController {
     public List<AvailabilitySlot> getAvailability() {
         return availabilityRepository.findAll();
     }
+    @GetMapping("/availability/weeks")
+    public List<String> getSavedWeeks() {
+        return availabilityRepository.findDistinctWeekStartDates();
+    }
 
     @DeleteMapping("/availability")
     public String deleteAllAvailability() {

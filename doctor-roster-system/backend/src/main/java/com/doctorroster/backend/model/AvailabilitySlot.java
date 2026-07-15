@@ -11,28 +11,69 @@ public class AvailabilitySlot {
 
     private String doctorName;
     private String doctorEmail;
+    private String weekStartDate;
     private String day;
     private String shiftName;
     private boolean available;
     private String preference;
 
-    public Long getId() { return id; }
+    public Long getId() {
+        return id;
+    }
 
-    public String getDoctorName() { return doctorName; }
-    public void setDoctorName(String doctorName) { this.doctorName = doctorName; }
+    public String getDoctorName() {
+        return doctorName;
+    }
 
-    public String getDoctorEmail() { return doctorEmail; }
-    public void setDoctorEmail(String doctorEmail) { this.doctorEmail = doctorEmail; }
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
+    }
 
-    public String getDay() { return day; }
-    public void setDay(String day) { this.day = day; }
+    public String getDoctorEmail() {
+        return doctorEmail;
+    }
 
-    public String getShift() { return shiftName; }
-    public void setShift(String shift) { this.shiftName = shift; }
+    public void setDoctorEmail(String doctorEmail) {
+        this.doctorEmail = doctorEmail;
+    }
 
-    public boolean isAvailable() { return available; }
-    public void setAvailable(boolean available) { this.available = available; }
+    public String getWeekStartDate() {
+        return weekStartDate;
+    }
 
-    public String getPreference() { return preference; }
-    public void setPreference(String preference) { this.preference = preference; }
+    public void setWeekStartDate(String weekStartDate) {
+        this.weekStartDate = weekStartDate;
+    }
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
+    }
+
+    public String getShift() {
+        return shiftName;
+    }
+
+    public void setShift(String shift) {
+        this.shiftName = shift;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+
+    public String getPreference() {
+        return preference;
+    }
+
+    public void setPreference(String preference) {
+        this.preference = preference;
+    }
 }

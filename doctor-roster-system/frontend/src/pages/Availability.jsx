@@ -5,6 +5,7 @@ const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
 const shifts = ["Morning", "Evening", "Night"];
 
 const options = [
+  "No Preference",
   "ETU-Uyanwaththa",
   "ETU-Galle Road",
   "Ward1-UW",
@@ -12,7 +13,6 @@ const options = [
   "Ward-GR",
   "OPD-UW",
   "WC-GR",
-  "No Preference",
 ];
 
 function AvailabilityTable() {
@@ -62,15 +62,20 @@ function AvailabilityTable() {
       <div className="glassCard">
         <div className="cardHeader">
           <div>
-            <h2>Weekly <span>Availability</span></h2>
+            <h2>
+              Weekly <span>Availability</span>
+            </h2>
             <p>Select your available shifts and preferred locations</p>
           </div>
 
-          <button className="resetBtn" onClick={resetForm}>Reset Form</button>
+          <button className="resetBtn" onClick={resetForm}>
+            Reset Form
+          </button>
         </div>
 
         <div className="availabilityGrid header">
           <div>Day</div>
+
           {shifts.map((shift) => (
             <div key={shift}>{shift}</div>
           ))}
@@ -96,18 +101,27 @@ function AvailabilityTable() {
                     Available
                   </label>
 
-                  <select
-                    disabled={!checked}
-                    value={data[day]?.[shift]?.preference || ""}
-                    onChange={(e) =>
-                      handleChange(day, shift, "preference", e.target.value)
-                    }
-                  >
-                    <option value="">Select Preference</option>
-                    {options.map((opt) => (
-                      <option key={opt} value={opt}>{opt}</option>
-                    ))}
-                  </select>
+                  {checked && (
+                    <select
+                      value={
+                        data[day]?.[shift]?.preference || "No Preference"
+                      }
+                      onChange={(e) =>
+                        handleChange(
+                          day,
+                          shift,
+                          "preference",
+                          e.target.value
+                        )
+                      }
+                    >
+                      {options.map((opt) => (
+                        <option key={opt} value={opt}>
+                          {opt}
+                        </option>
+                      ))}
+                    </select>
+                  )}
                 </div>
               );
             })}
@@ -115,10 +129,6 @@ function AvailabilityTable() {
         ))}
 
         <div className="bottomArea">
-          <div className="infoBox">
-            Select “Available” first, then choose your preferred location.
-          </div>
-
           <button className="submitBtn" onClick={handleSubmit}>
             Submit Availability
           </button>

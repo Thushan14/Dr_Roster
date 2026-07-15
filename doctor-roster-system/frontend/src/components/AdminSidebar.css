@@ -1,0 +1,205 @@
+.sharedAdminSidebar {
+  width: 80px;
+  height: 100%;
+  flex-shrink: 0;
+  padding: 22px 0;
+  background: #10184a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  position: relative;
+  z-index: 210;
+  box-sizing: border-box;
+}
+
+.sharedAdminMenuButton,
+.sharedAdminIconButton {
+  border: none;
+  background: transparent;
+  padding: 6px;
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.sharedAdminMenuButton {
+  margin-bottom: 35px;
+}
+
+.sharedAdminMenuButton img {
+  width: 24px;
+}
+
+.sharedAdminIconButton img,
+.sharedDoctorsIcon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.sharedAdminIconButton img {
+  padding: 10px;
+}
+
+.sharedDoctorsIcon {
+  color: #d7d7d7;
+  font-size: 25px;
+}
+
+.sharedAdminIconButton.active img,
+.sharedAdminIconButton.active .sharedDoctorsIcon {
+  background: #302277;
+  color: white;
+}
+
+.sharedAdminIconButton:hover img,
+.sharedAdminIconButton:hover .sharedDoctorsIcon {
+  transform: scale(1.07);
+  box-shadow: 0 0 13px rgba(125, 90, 255, 0.45);
+}
+
+.sharedAdminSidebarBlurred .sharedAdminIconButton {
+  filter: blur(3px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.sharedAdminSidebarBlurred .sharedAdminMenuButton {
+  filter: none;
+  pointer-events: auto;
+}
+
+.sharedAdminOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 190;
+
+  background: rgba(5, 10, 45, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  animation: sharedOverlayFadeIn 0.22s ease;
+}
+
+.sharedAdminPopup {
+  position: absolute;
+  top: 22px;
+  left: 80px;
+  width: 245px;
+  min-height: 470px;
+  padding: 50px 28px;
+  border-radius: 16px;
+  background: #e5e5e5;
+  z-index: 230;
+  box-sizing: border-box;
+  animation: sharedSidebarOpen 0.25s ease;
+
+  filter: none !important;
+  backdrop-filter: none !important;
+}
+
+.sharedAdminPopup.closing {
+  animation: sharedSidebarClose 0.25s ease forwards;
+}
+
+.sharedAdminPopupItem {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 8px 12px;
+  margin-bottom: 28px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  color: #938989;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.sharedAdminPopupItem img,
+.sharedPopupDoctorsIcon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #dce0ef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.sharedAdminPopupItem img {
+  padding: 10px;
+}
+
+.sharedPopupDoctorsIcon {
+  color: #8e8e8e;
+  font-size: 25px;
+}
+
+.sharedAdminPopupItem.active img,
+.sharedAdminPopupItem.active .sharedPopupDoctorsIcon {
+  background: #302277;
+  color: white;
+}
+
+.sharedAdminPopupItem:hover {
+  background: rgba(48, 34, 119, 0.08);
+}
+
+.sharedAdminLogout {
+  margin: 10px 0 0 42px;
+  padding: 12px 38px;
+  border: none;
+  border-radius: 12px;
+  background: #d9dcec;
+  color: #938989;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@keyframes sharedSidebarOpen {
+  from {
+    opacity: 0;
+    transform: translateX(-35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes sharedSidebarClose {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(-35px);
+  }
+}
+@keyframes sharedOverlayFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+.adminPanel,
+.profilePanel,
+.doctorRosterPanel {
+  position: relative;
+  overflow: hidden;
+}

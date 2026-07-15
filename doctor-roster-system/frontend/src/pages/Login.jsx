@@ -1,84 +1,116 @@
 import { useState } from "react";
 import "./Login.css";
-
-const accounts = [
-  { email: "doctor1@gmail.com", password: "1234", name: "Dr. Sanjaya Perera" },
-  { email: "doctor2@gmail.com", password: "1234", name: "Dr. Kasun Silva" },
-  { email: "doctor3@gmail.com", password: "1234", name: "Dr. Nimal Fernando" },
-  { email: "doctor4@gmail.com", password: "1234", name: "Dr. Amaya Jayasinghe" },
-];
+import { loginUser, verifyOtp } from "../services/authService";
 
 function Login({ onLogin }) {
-  const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (e) => {
+  const [otpStep, setOtpStep] = useState(false);
+  const [otpCode, setOtpCode] = useState("");
+
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    const user = accounts.find(
-      (acc) => acc.email === email && acc.password === password
-    );
+    try {
+      const result = await loginUser(email, password);
 
-    if (user) {
-      onLogin(user);
-    } else {
-      alert("Invalid email or password");
+      if (result.otpRequired) {
+        setOtpStep(true);
+      }
+    } catch (error) {
+      alert(error.message || "Invalid email or password");
     }
   };
 
+  const handleVerifyOtp = async (e) => {
+    e.preventDefault();
+
+    try {
+      const user = await verifyOtp(email, otpCode);
+
+      const savedProfile = localStorage.getItem(`profile_${user.email}`);
+
+      if (savedProfile) {
+        onLogin({ ...user, ...JSON.parse(savedProfile) });
+      } else {
+        onLogin(user);
+      }
+    } catch (error) {
+      alert(error.message || "OTP verification failed");
+    }
+  };
+
+  if (otpStep) {
+    return (
+      <div className="loginPage">
+        <form className="loginCard" onSubmit={handleVerifyOtp}>
+          <h3 style={{ color: "white", textAlign: "center" }}>
+            Enter OTP
+          </h3>
+
+          <div className="inputBox">
+            <span>▣</span>
+            <input
+              type="text"
+              placeholder="OTP CODE"
+              value={otpCode}
+              onChange={(e) => setOtpCode(e.target.value)}
+              required
+            />
+          </div>
+
+          <button type="submit" className="loginBtn">
+            VERIFY OTP
+          </button>
+
+          <button
+            type="button"
+            className="forgotBtn"
+            onClick={() => {
+              setOtpStep(false);
+              setOtpCode("");
+            }}
+          >
+            Back
+          </button>
+        </form>
+      </div>
+    );
+  }
+
   return (
     <div className="loginPage">
-      <div className="loginHeader">
-        <div className="medicalIcon">✚</div>
-        <h1>Doctor Roster System</h1>
-        <p>Hospital Weekly Roster Portal</p>
-      </div>
-
       <form className="loginCard" onSubmit={handleLogin}>
-        <h2>Welcome Back</h2>
-        <p className="subtitle">Please sign in to your account</p>
-
-        <label>Email / Username</label>
         <div className="inputBox">
-          <span>✉</span>
+          <span>☰</span>
           <input
             type="email"
-            placeholder="doctor1@gmail.com"
+            placeholder="EMAIL"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
 
-        <label>Password</label>
         <div className="inputBox">
-          <span>🔒</span>
+          <span>▣</span>
           <input
-            type={showPassword ? "text" : "password"}
-            placeholder="Enter password"
+            type="password"
+            placeholder="PASSWORD"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <button
-            type="button"
-            className="eyeBtn"
-            onClick={() => setShowPassword(!showPassword)}
-          >
-            👁
-          </button>
         </div>
 
-        <button type="button" className="forgotBtn">
-          Forgot Password?
-        </button>
-
         <button type="submit" className="loginBtn">
-          Login →
+          LOGIN
         </button>
 
-        <div className="secureText">🛡 Secure Login</div>
+        <button type="button" className="forgotBtn">
+          Forgot password?
+        </button>
       </form>
     </div>
   );
